@@ -119,6 +119,21 @@ function registerOnValueListener(folder_name) {
     } else {
       console.log("No data available at " + folder_name + "/HV");
     }
+
+    //To track HV/CELL_HOLD_MIN which is hv_maxtemp234
+  onValue(ref(db, folder_name + "/HV"), (snapshot) => {
+    const data = snapshot.val();
+    if (data){
+      const keys = Object.keys(data);
+      keys.forEach((key) => {
+        if (key == "CELL_HOLD_MIN"){
+          const element = document.getElementById("HOLD_MIN");
+          element.textContent = data[key];
+        }
+      })
+    } else {
+      console.log("No CELL data available at " + folder_name + "/HV");
+    }
   });
 
   
