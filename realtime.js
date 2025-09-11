@@ -1127,8 +1127,9 @@ brakeOption['palette'] = {
 
 // var brakeChart = new JSC.chart('brakeChart', brakeOption);
 
-
+/*
 var batteryOption = brakeOption;
+defaultSeries_type: 'gauge linear horizontal ', 
 batteryOption['palette'] = {
   pointValue: '%yValue',
   ranges: [ 
@@ -1140,7 +1141,47 @@ batteryOption['palette'] = {
         ] 
 };
 var batteryChart = new JSC.chart('batteryChart', batteryOption);
+*/
 
+var batteryOption = {
+  debug: true, 
+  defaultSeries_type: 'gauge linear horizontal ', 
+  yAxis: { 
+    defaultTick_enabled: true, 
+    customTicks: [0, 20, 40, 60, 80, 100], 
+    scale: { range: [0, 100] }, 
+    line: { 
+      width: 5, 
+      color: 'smartPalette', 
+      breaks_gap: 0.03 
+    } 
+  },
+  palette: { 
+    pointValue: '%yValue',
+    ranges: [ 
+        { value: 0, color: '#FCA70F' },
+        { value: 20, color: '#FC890F'}, 
+        { value: 40, color: '#FC600F' }, 
+        { value: 60, color:  '#FF0F17' }, 
+        { value: [80,100], color:  '#EE0000'},
+    ] 
+  }, 
+  defaultSeries: {
+    defaultPoint_tooltip: '<b>%seriesName percentage:</b> %yValue',
+    series_visible: true,
+    shape_label: [{
+      text: '%value%', // Access value and concatenate with empty string
+      verticalAlign: 'bottom',
+      style_fontSize: 15
+    },
+    {
+      text: '%name', // Access value and concatenate with empty string
+      verticalAlign: 'top',
+      style_fontSize: 15
+    }]
+  }
+};
+var batteryChart = new JSC.chart('batteryChart', batteryOption);
 
 /*
 var batteryOption = {
