@@ -1074,7 +1074,7 @@ zingchart.render({
 
 var accOption = {
   debug: true, 
-  defaultSeries_type: 'gauge linear vertical ', 
+  defaultSeries_type: 'gauge linear horizontal ', 
   yAxis: { 
     defaultTick_enabled: true, 
     customTicks: [0, 20, 40, 60, 80, 100], 
@@ -1130,7 +1130,6 @@ brakeOption['palette'] = {
 
 var batteryOption = brakeOption;
 batteryOption['palette'] = {
-  angle: 90,
   pointValue: '%yValue',
   ranges: [ 
           { value: 0, color: '#FF5321' },
