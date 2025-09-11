@@ -1127,9 +1127,10 @@ brakeOption['palette'] = {
 
 // var brakeChart = new JSC.chart('brakeChart', brakeOption);
 
-/*
+
 var batteryOption = brakeOption;
 batteryOption['palette'] = {
+  angle: 90,
   pointValue: '%yValue',
   ranges: [ 
           { value: 0, color: '#FF5321' },
@@ -1140,8 +1141,9 @@ batteryOption['palette'] = {
         ] 
 };
 var batteryChart = new JSC.chart('batteryChart', batteryOption);
-*/
 
+
+/*
 var batteryOption = {
   type: 'horizontal column', // horizontal bar
   series: [
@@ -1174,7 +1176,7 @@ var batteryOption = {
       }
     }
   }
-};
+};*/
 
 var batteryChart = new JSC.chart('batteryChart', batteryOption);
 
