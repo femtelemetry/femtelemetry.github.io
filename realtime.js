@@ -1127,6 +1127,7 @@ brakeOption['palette'] = {
 
 // var brakeChart = new JSC.chart('brakeChart', brakeOption);
 
+/*
 var batteryOption = brakeOption;
 batteryOption['palette'] = {
   pointValue: '%yValue',
@@ -1139,6 +1140,44 @@ batteryOption['palette'] = {
         ] 
 };
 var batteryChart = new JSC.chart('batteryChart', batteryOption);
+*/
+
+var batteryOption = {
+  type: 'horizontal column', // horizontal bar
+  series: [
+    {
+      points: [
+        { x: 'Battery', y: 65 } // sample value
+      ]
+    }
+  ],
+  palette: {
+    pointValue: '%yValue',
+    ranges: [
+      { value: 0, color: '#FF5321' },
+      { value: 20, color: '#FF5353' },
+      { value: 40, color: '#FFD221' },
+      { value: 60, color: '#77E6B4' },
+      { value: [80, 100], color: '#21D683' }
+    ]
+  },
+  yAxis: { visible: false }, // hide vertical axis
+  xAxis: { defaultTick: { enabled: false } }, // hide ticks
+  defaultSeries: {
+    shape_innerPadding: 0.2,
+    defaultPoint: {
+      label: {
+        text: '%yValue%',  // show value
+        placement: 'right', // place it to the right of the bar
+        align: 'left',
+        style: { fontSize: '18px', fontWeight: 'bold' } // bigger text
+      }
+    }
+  }
+};
+
+var batteryChart = new JSC.chart('batteryChart', batteryOption);
+
 
 // var brakeChart = new JSC.chart('brakeChart', { 
 //   debug: true, 
