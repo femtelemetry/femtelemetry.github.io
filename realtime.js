@@ -1154,7 +1154,7 @@ var batteryOption = {
         // per-point label: place it outside on the right and make the font big
         defaultPoint: {
           label: {
-            text: '%xValue%',       // show numeric value
+            text: '%yValue%',       // show numeric value
             placement: 'outside',   // outside the bar
             align: 'left',
             style: { fontSize: '26px', fontWeight: '700' }
@@ -1180,7 +1180,7 @@ var batteryOption = {
 
     // use your palette ranges to color the bar according to its value
     palette: {
-      pointValue: '%xValue',
+      pointValue: '%yValue',
       ranges: [
         { value: 0, color: '#FF5321' },
         { value: 20, color: '#FF5353' },
@@ -1192,9 +1192,20 @@ var batteryOption = {
 
     // make the bar thicker
     defaultSeries: {
-      // pointWidth controls vertical thickness of the horizontal bar
-      pointWidth: 30
+      defaultPoint_tooltip: '<b>%seriesName percentage:</b> %yValue',
+      series_visible: true,
+      shape_label: [{
+        text: '%value%', // Access value and concatenate with empty string
+        verticalAlign: 'bottom',
+        style_fontSize: 15
+      },
+      {
+        text: '%name', // Access value and concatenate with empty string
+        verticalAlign: 'top',
+        style_fontSize: 15
+      }]
     }
+  
   };
 
   // create / replace the chart
