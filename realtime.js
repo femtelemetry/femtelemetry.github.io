@@ -1147,7 +1147,7 @@ var batteryOption = {
   series: [
     {
       points: [
-        { x: 'Battery', y: 65 } // sample value
+        { x: 'Battery', y: 75 } // sample value
       ]
     }
   ],
