@@ -1154,7 +1154,7 @@ var batteryOption = {
         // per-point label: place it outside on the right and make the font big
         defaultPoint: {
           label: {
-            text: '%yValue%',       // show numeric value
+            text: '%xValue%',       // show numeric value
             placement: 'outside',   // outside the bar
             align: 'left',
             style: { fontSize: '26px', fontWeight: '700' }
@@ -1180,7 +1180,7 @@ var batteryOption = {
 
     // use your palette ranges to color the bar according to its value
     palette: {
-      pointValue: '%yValue',
+      pointValue: '%xValue',
       ranges: [
         { value: 0, color: '#FF5321' },
         { value: 20, color: '#FF5353' },
