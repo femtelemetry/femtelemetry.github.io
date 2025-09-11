@@ -1129,7 +1129,6 @@ brakeOption['palette'] = {
 
 /*
 var batteryOption = brakeOption;
-defaultSeries_type: 'gauge linear horizontal ', 
 batteryOption['palette'] = {
   pointValue: '%yValue',
   ranges: [ 
@@ -1144,44 +1143,62 @@ var batteryChart = new JSC.chart('batteryChart', batteryOption);
 */
 
 var batteryOption = {
-  debug: true, 
-  defaultSeries_type: 'gauge linear horizontal ', 
-  yAxis: { 
-    defaultTick_enabled: true, 
-    customTicks: [0, 20, 40, 60, 80, 100], 
-    scale: { range: [0, 100] }, 
-    line: { 
-      width: 5, 
-      color: 'smartPalette', 
-      breaks_gap: 0.03 
-    } 
-  },
-  palette: { 
-    pointValue: '%yValue',
-    ranges: [ 
-        { value: 0, color: '#FCA70F' },
-        { value: 20, color: '#FC890F'}, 
-        { value: 40, color: '#FC600F' }, 
-        { value: 60, color:  '#FF0F17' }, 
-        { value: [80,100], color:  '#EE0000'},
-    ] 
-  }, 
-  defaultSeries: {
-    defaultPoint_tooltip: '<b>%seriesName percentage:</b> %yValue',
-    series_visible: true,
-    shape_label: [{
-      text: '%value%', // Access value and concatenate with empty string
-      verticalAlign: 'bottom',
-      style_fontSize: 15
+    type: 'bar',               // horizontal bar chart
+    series: [
+      {
+        name: 'Battery',
+        points: [
+          // label (x) isn't shown — use a single point with y = battery %
+          ['Battery', batteryValue]
+        ],
+        // per-point label: place it outside on the right and make the font big
+        defaultPoint: {
+          label: {
+            text: '%yValue%',       // show numeric value
+            placement: 'outside',   // outside the bar
+            align: 'left',
+            style: { fontSize: '26px', fontWeight: '700' }
+          }
+        }
+      }
+    ],
+
+    // make x-axis 0..100 so the bar behaves like a progress bar
+    xAxis: {
+      scale: { min: 0, max: 100 },
+      defaultTick: { enabled: false },
+      labels: { enabled: false }
     },
-    {
-      text: '%name', // Access value and concatenate with empty string
-      verticalAlign: 'top',
-      style_fontSize: 15
-    }]
-  }
-};
-var batteryChart = new JSC.chart('batteryChart', batteryOption);
+
+    // hide y-axis labels/ticks
+    yAxis: {
+      defaultTick: { enabled: false },
+      labels: { enabled: false }
+    },
+
+    legend: { visible: false },
+
+    // use your palette ranges to color the bar according to its value
+    palette: {
+      pointValue: '%yValue',
+      ranges: [
+        { value: 0, color: '#FF5321' },
+        { value: 20, color: '#FF5353' },
+        { value: 40, color: '#FFD221' },
+        { value: 60, color: '#77E6B4' },
+        { value: [80,100], color: '#21D683' }
+      ]
+    },
+
+    // make the bar thicker
+    defaultSeries: {
+      // pointWidth controls vertical thickness of the horizontal bar
+      pointWidth: 30
+    }
+  };
+
+  // create / replace the chart
+  var batteryChart = JSC.chart('batteryChart', batteryOption);
 
 /*
 var batteryOption = {
