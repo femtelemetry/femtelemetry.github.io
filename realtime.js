@@ -1198,7 +1198,7 @@ var batteryOption = {
   };
 
   // create / replace the chart
-  var batteryChart = JSC.chart('batteryChart', batteryOption);
+  var batteryChart = new JSC.chart('batteryChart', batteryOption);
 
 /*
 var batteryOption = {
@@ -1235,7 +1235,7 @@ var batteryOption = {
   }
 };*/
 
-var batteryChart = new JSC.chart('batteryChart', batteryOption);
+//var batteryChart = new JSC.chart('batteryChart', batteryOption);
 
 
 // var brakeChart = new JSC.chart('brakeChart', { 

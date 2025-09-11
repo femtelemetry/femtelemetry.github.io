@@ -439,6 +439,7 @@ footer {
     .pedalBlock{
         float: none;
         height: max-content;
+        width: 80%;
        .pedalcharts {
             flex-direction: column;
             height: max-content;
